@@ -2,7 +2,7 @@
 
 namespace Asdh\LaravelFlatpickr;
 
-use Asdh\LaravelFlatpickr\Commands\LaravelFlatpickrCommand;
+use Asdh\LaravelFlatpickr\Components\Flatpickr;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,8 +18,7 @@ class LaravelFlatpickrServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-flatpickr')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-flatpickr_table')
-            ->hasCommand(LaravelFlatpickrCommand::class);
+            ->hasViewComponent('', Flatpickr::class)
+            ->hasViews();
     }
 }
