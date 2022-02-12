@@ -38,7 +38,7 @@ class Flatpickr extends Component
             $this->visibleMonths = 2;
         }
 
-        $this->throwExceptions();
+        $this->throwValueExceptions();
     }
 
     public function config(): array
@@ -102,14 +102,18 @@ class Flatpickr extends Component
         return $this->multiple ? 'multiple' : null;
     }
 
-    private function value(): int|array|null
+    private function value(): string|int|array|null
     {
-        if (! $this->value) {
+        if (!$this->value) {
             return null;
         }
 
-        if ($this->multiple || $this->range) {
+        if ($this->multiple) {
             return $this->formatDates($this->value);
+        }
+
+        if ($this->range) {
+            return $this->value;
         }
 
         return Carbon::parse($this->value)->getTimestampMs();
@@ -149,7 +153,7 @@ class Flatpickr extends Component
 
     private function time24hr(): ?bool
     {
-        if (! $this->showTime) {
+        if (!$this->showTime) {
             return null;
         }
 
@@ -166,24 +170,34 @@ class Flatpickr extends Component
         return view('flatpickr::flatpickr.clear');
     }
 
-    private function throwExceptions()
+    private function throwValueExceptions()
     {
-        if ($this->value) {
-            if ($this->multiple && ! is_array($this->value)) {
-                throw new \Exception("The value must be array when multiple is set.");
-            }
+        if (!$this->value) {
+            return;
+        }
 
-            if ($this->range && ! is_array($this->value)) {
-                throw new \Exception("The value must be array when range is set.");
-            }
+        switch ($this->mode()) {
+            case 'multiple':
+                if (!is_array($this->value)) {
+                    throw new \Exception("The value must be array of dates or Carbon instances when multiple is set.");
+                }
+                break;
 
-            if ($this->range && is_array($this->value) && count($this->value) !== 2) {
-                throw new \Exception("The value must have 2 items when range is set.");
-            }
+            case 'range':
+                if (!is_string($this->value)) {
+                    throw new \Exception("The value must be string when range is set.");
+                }
 
-            if (! $this->multiple && ! $this->range && is_array($this->value)) {
-                throw new \Exception("The value cannot be array. Please provide a date string or Carbon instance.");
-            }
+                if (!Str::contains($this->value, ' to ')) {
+                    throw new \Exception("The two dates must be string and separated by ' to ' in between.");
+                }
+                break;
+
+            default:
+                if (is_array($this->value)) {
+                    throw new \Exception("The value cannot be array. Please provide a date string or Carbon instance.");
+                }
+                break;
         }
     }
 }
