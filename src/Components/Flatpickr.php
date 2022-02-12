@@ -3,8 +3,8 @@
 namespace Asdh\LaravelFlatpickr\Components;
 
 use Carbon\Carbon;
-use Illuminate\View\Component;
 use Illuminate\Support\Str;
+use Illuminate\View\Component;
 
 class Flatpickr extends Component
 {
@@ -104,7 +104,7 @@ class Flatpickr extends Component
 
     private function value(): int|array|null
     {
-        if (!$this->value) {
+        if (! $this->value) {
             return null;
         }
 
@@ -140,7 +140,7 @@ class Flatpickr extends Component
             return [
                 'locale' => [
                     'firstDayOfWeek' => $this->firstDayOfWeek,
-                ]
+                ],
             ];
         }
 
@@ -149,7 +149,7 @@ class Flatpickr extends Component
 
     private function time24hr(): ?bool
     {
-        if (!$this->showTime) {
+        if (! $this->showTime) {
             return null;
         }
 
@@ -169,11 +169,11 @@ class Flatpickr extends Component
     private function throwExceptions()
     {
         if ($this->value) {
-            if ($this->multiple && !is_array($this->value)) {
+            if ($this->multiple && ! is_array($this->value)) {
                 throw new \Exception("The value must be array when multiple is set.");
             }
 
-            if ($this->range && !is_array($this->value)) {
+            if ($this->range && ! is_array($this->value)) {
                 throw new \Exception("The value must be array when range is set.");
             }
 
@@ -181,7 +181,7 @@ class Flatpickr extends Component
                 throw new \Exception("The value must have 2 items when range is set.");
             }
 
-            if (!$this->multiple && !$this->range && is_array($this->value)) {
+            if (! $this->multiple && ! $this->range && is_array($this->value)) {
                 throw new \Exception("The value cannot be array. Please provide a date string or Carbon instance.");
             }
         }
