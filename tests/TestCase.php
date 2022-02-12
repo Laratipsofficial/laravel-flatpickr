@@ -2,9 +2,9 @@
 
 namespace Asdh\LaravelFlatpickr\Tests;
 
+use Asdh\LaravelFlatpickr\LaravelFlatpickrServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Asdh\LaravelFlatpickr\LaravelFlatpickrServiceProvider;
 
 class TestCase extends Orchestra
 {

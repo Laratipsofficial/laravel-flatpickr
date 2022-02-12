@@ -2,9 +2,9 @@
 
 namespace Asdh\LaravelFlatpickr;
 
+use Asdh\LaravelFlatpickr\Commands\LaravelFlatpickrCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Asdh\LaravelFlatpickr\Commands\LaravelFlatpickrCommand;
 
 class LaravelFlatpickrServiceProvider extends PackageServiceProvider
 {
