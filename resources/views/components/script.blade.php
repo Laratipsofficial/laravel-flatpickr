@@ -1,7 +1,7 @@
 <script src="{{ $url ?? asset('vendor/flatpickr/js/flatpickr.js') }}"></script>
 <script>
     (function () {
-        let supportedEvents = ['onChange', 'onOpen', 'onClose', 'onMonthChange', 'onYearChange', 'onReady', 'onValueUpdate'];
+        let supportedEventNames = ['onChange', 'onOpen', 'onClose', 'onMonthChange', 'onYearChange', 'onReady', 'onValueUpdate', 'onDayCreate'];
 
         document.addEventListener("DOMContentLoaded", function(event) {
             document.querySelectorAll('.flatpickr-input').forEach((el) => initializeFlatpickr(el))
@@ -34,15 +34,19 @@
         }
 
         function events(el) {
-            return supportedEvents.reduce((obj, eventName) => {
-                if (el.hasAttribute(eventName)) {
-                    obj[eventName] = function(selectedDates, dateStr, instance) {
-                        eval(el.getAttribute(eventName))(selectedDates, dateStr, instance)
+            let elEvents = el.getAttributeNames().filter(name => name.startsWith('on'));
+
+            return elEvents.reduce((obj, elEventName) => {
+                let eventName = supportedEventNames.find(eventName => eventName.toLowerCase() === elEventName);
+
+                if (eventName) {
+                    obj[eventName] = function(...params) {
+                        eval(el.getAttribute(eventName))(...params)
                     }
                 }
 
                 return obj;
-            }, {})
+            }, {});
         }
     })();
 
