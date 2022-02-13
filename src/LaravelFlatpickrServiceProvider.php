@@ -19,6 +19,7 @@ class LaravelFlatpickrServiceProvider extends PackageServiceProvider
             ->name('laravel-flatpickr')
             ->hasConfigFile()
             ->hasViewComponent('', Flatpickr::class)
-            ->hasViews();
+            ->hasViews()
+            ->hasAssets();
     }
 }

@@ -22,6 +22,12 @@ You can publish the config file with:
 php artisan vendor:publish --tag="flatpickr-config"
 ```
 
+You can publish the assets with:
+
+```bash
+php artisan vendor:publish --tag="flatpickr-assets"
+```
+
 This is the contents of the published config file:
 
 ```php
