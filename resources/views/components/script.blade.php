@@ -1,4 +1,4 @@
-<script src="{{ asset('js/flatpickr.js') }}"></script>
+<script src="{{ $url ?? asset('vendor/flatpickr/js/flatpickr.js') }}"></script>
 <script>
     (function () {
         let supportedEvents = ['onChange', 'onOpen', 'onClose', 'onMonthChange', 'onYearChange', 'onReady', 'onValueUpdate'];
