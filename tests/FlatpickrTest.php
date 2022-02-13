@@ -120,7 +120,7 @@ it("default date must be array of int if multiple is passed", function () {
         ]);
 });
 
-it("default date must be string if range is passed", function () {
+it("default date can be string if range is passed", function () {
     $component = new Flatpickr(
         range: true,
         value: "2022-02-16 to 2022-03-15"
@@ -132,25 +132,47 @@ it("default date must be string if range is passed", function () {
         ]);
 });
 
+it("default date can be array if range is passed", function () {
+    $component = new Flatpickr(
+        range: true,
+        value: ["2022-02-16", "2022-03-15"]
+    );
+
+    expect($component->config())
+        ->toMatchArray([
+            'defaultDate' => [
+                Carbon::parse("2022-02-16")->getTimestampMs(),
+                Carbon::parse("2022-03-15")->getTimestampMs(),
+            ],
+        ]);
+});
+
 it("cannot accept array as value if no mode is set", function () {
     new Flatpickr(
         value: ["2022-02-16"]
     );
 })->throws("The value cannot be array. Please provide a date string or Carbon instance.");
 
-it("cannot accept array as value if mode is range", function () {
-    new Flatpickr(
-        range: true,
-        value: ["2022-02-16"]
-    );
-})->throws("The value must be string when range is set.");
-
-it("cannot accept string without ' to ' in it mode is range", function () {
+it("cannot accept string without ' to ' in it mode is range with string value", function () {
     new Flatpickr(
         range: true,
         value: "2022-02-16"
     );
 })->throws("The two dates must be string and separated by ' to ' in between.");
+
+it("cannot accept array with less than 2 items if mode is range with array value", function () {
+    new Flatpickr(
+        range: true,
+        value: ["2022-02-16"]
+    );
+})->throws("The value must be an array with only 2 dates when range is set.");
+
+it("cannot accept array with more than 2 items if mode is range with array value", function () {
+    new Flatpickr(
+        range: true,
+        value: ["2022-02-16", "2022-02-18", "2022-02-20"]
+    );
+})->throws("The value must be an array with only 2 dates when range is set.");
 
 it("cannot accept other than array if mode is multiple", function () {
     new Flatpickr(

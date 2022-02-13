@@ -124,6 +124,21 @@ it('show the passed date as the default value', function () {
         ->assertSee('"defaultDate":' . today()->getTimestampMs(), false);
 });
 
+it('show the passed date as the default value in multiple mode', function () {
+    test()->blade('<x-flatpickr id="laravel-flatpickr" :value="[today(), today()->addDays(2)]" multiple />')
+        ->assertSee('"defaultDate":[' . today()->getTimestampMs() . ',' . today()->addDays(2)->getTimestampMs() . ']', false);
+});
+
+it('show the passed date as the default value in array range mode', function () {
+    test()->blade('<x-flatpickr id="laravel-flatpickr" :value="[today(), today()->addDays(2)]" range />')
+        ->assertSee('"defaultDate":[' . today()->getTimestampMs() . ',' . today()->addDays(2)->getTimestampMs() . ']', false);
+});
+
+it('show the passed date as the default value in string range mode', function () {
+    test()->blade('<x-flatpickr id="laravel-flatpickr" value="2022-02-16 to 2022-02-19" range />')
+        ->assertSee('"defaultDate":"2022-02-16 to 2022-02-19"', false);
+});
+
 it('can be shown as inline date picker', function () {
     test()->blade('<x-flatpickr id="laravel-flatpickr" inline />')
         ->assertSee('"inline":true', false);

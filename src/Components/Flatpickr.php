@@ -113,6 +113,10 @@ class Flatpickr extends Component
         }
 
         if ($this->range) {
+            if (is_array($this->value)) {
+                return $this->formatDates($this->value);
+            }
+
             return $this->value;
         }
 
@@ -185,6 +189,14 @@ class Flatpickr extends Component
                 break;
 
             case 'range':
+                if (is_array($this->value)) {
+                    if (count($this->value) !== 2) {
+                        throw new \Exception("The value must be an array with only 2 dates when range is set.");
+                    }
+
+                    return;
+                }
+
                 if (! is_string($this->value)) {
                     throw new \Exception("The value must be string when range is set.");
                 }
