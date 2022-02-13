@@ -1,15 +1,17 @@
-# A laravel clone of the javascript flatpickr package
+# A Laravel clone of the Javascript Flatpickr (Date picker) library
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/asdh/laravel-flatpickr.svg?style=flat-square)](https://packagist.org/packages/asdh/laravel-flatpickr)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/asdh/laravel-flatpickr/run-tests?label=tests)](https://github.com/asdh/laravel-flatpickr/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/asdh/laravel-flatpickr/Check%20&%20fix%20styling?label=code%20style)](https://github.com/asdh/laravel-flatpickr/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/Laratipsofficial/laravel-flatpickr/run-tests?label=tests)](https://github.com/Laratipsofficial/laravel-flatpickr/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/Laratipsofficial/laravel-flatpickr/Check%20&%20fix%20styling?label=code%20style)](https://github.com/Laratipsofficial/laravel-flatpickr/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/asdh/laravel-flatpickr.svg?style=flat-square)](https://packagist.org/packages/asdh/laravel-flatpickr)
 
 Using this package you can add a beautiful date or datetime picker into your project without touching any javascript with the power or laravel component. It is just a laravel component wrapper for the [Flatpickr](https://flatpickr.js.org/) javascript library.
 
+<p style="text-align:center;font-size:32px;">Created with ❤️ from Nepal 🇳🇵</p>
+
 ## Support
 
-You can support me by subscribing to my [YouTube](https://www.youtube.com/c/Laratips) channel.
+You can support me by subscribing to my [YouTube channel - Laratips](https://www.youtube.com/c/Laratips).
 
 If you want me to continue developing this package and want me to develop other similar packages, then you help me financially by sending few bucks to my [Wise](https://wise.com/invite/ath/ashishd233) account in Nepalese 🇳🇵 currency.
 
@@ -135,6 +137,10 @@ Add it to your page.
 ```
 
 Yes, it's that simple. Now you have a beautiful looking date picker in your page without touching a single javascript at all.
+
+<p align="center">
+    <img src="docs/images/single-picker.png" alt="Laravel Flatpickr" width="300px">
+</p>
 
 ## Component props
 
@@ -318,6 +324,10 @@ Disable the weekend in the calendar. Saturday and Sunday are disabled.
 <x-flatpickr disable-weekend />
 ```
 
+<p align="center">
+    <img src="docs/images/disable-weekend.png" alt="Laravel Flatpickr" width="300px">
+</p>
+
 ### disable
 
 **Type:** array
@@ -362,6 +372,10 @@ Sets the calendar mode to `multiple`. You will be able to select multiple dates.
 <x-flatpickr multiple />
 ```
 
+<p align="center">
+    <img src="docs/images/multiple-picker.png" alt="Laravel Flatpickr" width="300px">
+</p>
+
 ### range
 
 **Type:** bool
@@ -376,6 +390,10 @@ By default 2 months will be visible in the dropdown when the mode is `range`. Yo
 <x-flatpickr range />
 ```
 
+<p align="center">
+    <img src="docs/images/range-picker.png" alt="Laravel Flatpickr" width="500px">
+</p>
+
 ### visibleMonths
 
 **Type:** int
@@ -387,6 +405,10 @@ The number of months to be shown at the same time when displaying the calendar.
 ```html
 <x-flatpickr :visible-months="3" />
 ```
+
+<p align="center">
+    <img src="docs/images/3-visible-months.png" alt="Laravel Flatpickr" width="600px">
+</p>
 
 ### inline
 
@@ -465,6 +487,10 @@ Shows a clear icon on the right side of the date picker. Clicking on it will cle
 ```html
 <x-flatpickr clearable />
 ```
+
+<p align="center">
+    <img src="docs/images/clearable.png" alt="Laravel Flatpickr" width="300px">
+</p>
 
 ## Event Hooks
 
