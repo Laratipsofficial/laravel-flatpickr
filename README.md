@@ -7,6 +7,10 @@
 
 Using this package you can add a beautiful date or datetime picker into your project without touching any javascript with the power or laravel component. It is just a laravel component wrapper for the [Flatpickr](https://flatpickr.js.org/) javascript library.
 
+<p align="center">
+    <img src="docs/images/single-picker.png" alt="Laravel Flatpickr" width="300px">
+</p>
+
 <p align="center" style="font-size:32px;">Created with ❤️ from Nepal 🇳🇵</p>
 
 ## Support
