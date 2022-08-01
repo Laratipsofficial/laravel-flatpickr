@@ -36,11 +36,11 @@ it("can set style url as per the priority", function () {
 it("can render scripts", function () {
     test()->blade('<x-flatpickr::script />')
         ->assertSee('flatpickr(')
-        ->assertSee('supportedEventNames')
-        ->assertSee('function initializeFlatpickr')
-        ->assertSee('function config')
-        ->assertSee('function disableWeekends')
-        ->assertSee('function events')
+        ->assertSee('__supportedEventNames:')
+        ->assertSee('initializeFlatpickr:function')
+        ->assertSee('__config:function')
+        ->assertSee('__disableWeekends:function')
+        ->assertSee('__events:function')
         ->assertSee('vendor/flatpickr/js/flatpickr.js');
 });
 
