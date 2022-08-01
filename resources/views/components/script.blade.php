@@ -1,56 +1,5 @@
 <script src="{{ $url ?? config('flatpickr.js_url') ?? asset('vendor/flatpickr/js/flatpickr.js') }}"></script>
-{{-- <script>
-    (function () {
-        let supportedEventNames = ['onChange', 'onOpen', 'onClose', 'onMonthChange', 'onYearChange', 'onReady', 'onValueUpdate', 'onDayCreate'];
-
-        document.addEventListener("DOMContentLoaded", function(event) {
-            document.querySelectorAll('.flatpickr-input').forEach((el) => initializeFlatpickr(el))
-        })
-
-        function initializeFlatpickr(el) {
-            let selectorEl = document.getElementById(el.getAttribute('data-selector-id'));
-
-            flatpickr(selectorEl, config(el))
-        }
-
-        function config(el) {
-            let config = JSON.parse(el.getAttribute('data-config'));
-            let isWeekendDisabled = el.getAttribute('data-disable-weekend') === "1";
-
-            if (isWeekendDisabled) {
-                config.disable.push(disableWeekends())
-            }
-
-            return {
-                ...config,
-                ...events(el),
-            };
-        }
-
-        function disableWeekends() {
-            return function(date) {
-                return (date.getDay() === 0 || date.getDay() === 6);
-            }
-        }
-
-        function events(el) {
-            let elEvents = el.getAttributeNames().filter(name => name.startsWith('on'));
-
-            return elEvents.reduce((obj, elEventName) => {
-                let eventName = supportedEventNames.find(eventName => eventName.toLowerCase() === elEventName);
-
-                if (eventName) {
-                    obj[eventName] = function(...params) {
-                        eval(el.getAttribute(eventName))(...params)
-                    }
-                }
-
-                return obj;
-            }, {});
-        }
-    })();
-
-</script> --}}
+{{-- check /resources/to-be-minified/ folder for not minified scripts --}}
 <script>
-    !function(){let supportedEventNames=["onChange","onOpen","onClose","onMonthChange","onYearChange","onReady","onValueUpdate","onDayCreate"];function initializeFlatpickr(e){let t=document.getElementById(e.getAttribute("data-selector-id"));flatpickr(t,config(e))}function config(e){let t=JSON.parse(e.getAttribute("data-config"));return"1"===e.getAttribute("data-disable-weekend")&&t.disable.push(disableWeekends()),{...t,...events(e)}}function disableWeekends(){return function(e){return 0===e.getDay()||6===e.getDay()}}function events(el){let elEvents=el.getAttributeNames().filter(e=>e.startsWith("on"));return elEvents.reduce((obj,elEventName)=>{let eventName=supportedEventNames.find(e=>e.toLowerCase()===elEventName);return eventName&&(obj[eventName]=function(...params){eval(el.getAttribute(eventName))(...params)}),obj},{})}document.addEventListener("DOMContentLoaded",function(e){document.querySelectorAll(".flatpickr-input").forEach(e=>initializeFlatpickr(e))})}();
+    window.LaravelFlatpickr={__supportedEventNames:["onChange","onOpen","onClose","onMonthChange","onYearChange","onReady","onValueUpdate","onDayCreate"],initializeFlatpickr:function(a){flatpickr(document.getElementById(a.getAttribute("data-selector-id")),this.__config(a))},__config:function(a){let b=JSON.parse(a.getAttribute("data-config"));return"1"===a.getAttribute("data-disable-weekend")&&b.disable.push(this.__disableWeekends()),{...b,...this.__events(a)}},__disableWeekends:function(){return function(a){return 0===a.getDay()||6===a.getDay()}},__events:function(el){let elEvents;return el.getAttributeNames().filter(a=>a.startsWith("on")).reduce((obj,elEventName)=>{let eventName=this.__supportedEventNames.find(a=>a.toLowerCase()===elEventName);return eventName&&(obj[eventName]=function(...params){eval(el.getAttribute(eventName))(...params)}),obj},{})}},document.addEventListener("DOMContentLoaded",function(a){document.querySelectorAll(".flatpickr-input").forEach(a=>window.LaravelFlatpickr.initializeFlatpickr(a))});var observer=new MutationObserver(a=>{a.forEach(a=>{a.removedNodes.length>0&&window.LaravelFlatpickr.initializeFlatpickr(a.previousSibling)})});document.querySelectorAll(".flatpickr-container").forEach(a=>{observer.observe(a,{childList:!0})})
 </script>
