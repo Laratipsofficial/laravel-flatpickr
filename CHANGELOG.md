@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-flatpickr` will be documented in this file.
 
+## Laravel 10 support - 2023-02-16
+
+Support Laravel 10
+
 ## 1.0.1 - 2022-02-13
 
 ## What's Changed
