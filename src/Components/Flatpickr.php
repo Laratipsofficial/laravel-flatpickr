@@ -61,6 +61,7 @@ class Flatpickr extends Component
             'weekNumbers' => $this->showWeekNumbers ?: null,
             'wrap' => $this->clearable ?: null,
             'showMonths' => $this->visibleMonths,
+            'disableMobile' => $this->disableMobile ?: true,
         ])
             ->merge($this->firstDayOfWeekConfig())
             ->merge($this->config)
@@ -104,7 +105,7 @@ class Flatpickr extends Component
 
     private function value(): string|int|array|null
     {
-        if (! $this->value) {
+        if (!$this->value) {
             return null;
         }
 
@@ -157,7 +158,7 @@ class Flatpickr extends Component
 
     private function time24hr(): ?bool
     {
-        if (! $this->showTime) {
+        if (!$this->showTime) {
             return null;
         }
 
@@ -176,13 +177,13 @@ class Flatpickr extends Component
 
     private function throwValueExceptions()
     {
-        if (! $this->value) {
+        if (!$this->value) {
             return;
         }
 
         switch ($this->mode()) {
             case 'multiple':
-                if (! is_array($this->value)) {
+                if (!is_array($this->value)) {
                     throw new \Exception("The value must be array of dates or Carbon instances when multiple is set.");
                 }
 
@@ -197,11 +198,11 @@ class Flatpickr extends Component
                     return;
                 }
 
-                if (! is_string($this->value)) {
+                if (!is_string($this->value)) {
                     throw new \Exception("The value must be string when range is set.");
                 }
 
-                if (! Str::contains($this->value, ' to ')) {
+                if (!Str::contains($this->value, ' to ')) {
                     throw new \Exception("The two dates must be string and separated by ' to ' in between.");
                 }
 
