@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-flatpickr` will be documented in this file.
 
+## Add disableMobile option - 2023-05-30
+
+Add disableMobile option
+
 ## Laravel 10 support - 2023-02-16
 
 Support Laravel 10
