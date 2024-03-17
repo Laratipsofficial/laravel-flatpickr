@@ -64,7 +64,6 @@ class Flatpickr extends Component
             'showMonths' => $this->visibleMonths,
             'disableMobile' => $this->disableMobile ?: false,
         ])
-            ->merge($this->firstDayOfWeekConfig())
             ->merge($this->config)
             ->filter(fn ($item) => $item !== null)
             ->toArray();
@@ -142,19 +141,6 @@ class Flatpickr extends Component
     public function selectorId(): string
     {
         return $this->clearable ? $this->containerId() : $this->id;
-    }
-
-    private function firstDayOfWeekConfig()
-    {
-        if ($this->firstDayOfWeek > 0) {
-            return [
-                'locale' => [
-                    'firstDayOfWeek' => $this->firstDayOfWeek,
-                ],
-            ];
-        }
-
-        return [];
     }
 
     private function time24hr(): ?bool

@@ -19,4 +19,10 @@ return [
      * The flatpickr css will be untouched.
      */
     'use_style' => env('FLATPICKR_USE_STYLE', true),
+
+    /**
+     * The language that flatpickr will use.
+     * If no value is passed, it will be English.
+     */
+    'locale' => env('FLATPICKR_LOCALE', null),
 ];
