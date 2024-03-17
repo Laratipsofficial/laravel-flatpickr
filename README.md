@@ -65,6 +65,12 @@ return [
      * The flatpickr css will be untouched.
      */
     'use_style' => env('FLATPICKR_USE_STYLE', true),
+
+    /**
+     * The language that flatpickr will use.
+     * If no value is passed, it will be the default one.
+     */
+    'locale' => env('FLATPICKR_LOCALE', null),
 ];
 ```
 
@@ -131,6 +137,16 @@ You can even change the `url` from the component itself:
 ```
 
 The `url` passed form the component will take more priority over the config file.
+
+### Locale
+
+If you want to use a different locale then you can change it from the .env file:
+
+```env
+FLATPICKR_LOCALE=de
+```
+
+You can see the [available locales from here.](https://github.com/flatpickr/flatpickr/tree/master/src/l10n)
 
 ### Using the component
 

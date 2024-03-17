@@ -68,3 +68,10 @@ it("can set script url as per the priority", function () {
         ->assertDontSee('https://url-from-config.js')
         ->assertDontSee('vendor/flatpickr/css/flatpickr.css');
 });
+
+it("can set locale from config file", function () {
+    config()->set('flatpickr.locale', 'de');
+
+    test()->blade('<x-flatpickr::script />')
+        ->assertSee('https://npmcdn.com/flatpickr/dist/l10n/de.js');
+});

@@ -72,8 +72,8 @@ it('uses max time when passed', function () {
 });
 
 it('uses first day of week as passed', function () {
-    test()->blade('<x-flatpickr id="laravel-flatpickr" :first-day-of-week="1" />')
-        ->assertSee('"locale":{"firstDayOfWeek":1}', false);
+    test()->blade('<x-flatpickr id="laravel-flatpickr" :first-day-of-week="2" />')
+        ->assertSee('data-first-day-of-week="2"', false);
 });
 
 it('can disable the weekend', function () {
